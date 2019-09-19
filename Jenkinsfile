@@ -1,6 +1,15 @@
+@Library('jlibrary@main')_
+
 pipeline {
   agent any
   stages {
+    stage("Freezing code") {
+      steps {
+        script {
+          test.gradle()
+        }
+      }
+    }
     stage('stage1') {
       parallel {
         stage('stage1') {
@@ -27,5 +36,10 @@ pipeline {
         echo 'Stage2'
       }
     }
+    stage('stage3') {
+      steps {
+        echo 'Stage2'
+      }
+    }    
   }
 }
